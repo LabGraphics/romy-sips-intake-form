@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romy Sips</title>
+    <title>Romy Sips | Event Intake Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,6 +15,7 @@
             <img src="assets/romy-sips-logo.png" alt="Romy Sips Logo" class="logo">
             <div class="phone">678-799-6323</div>
         </div>
+
         <form id="romyForm" action="https://formsubmit.co/romyllc2020@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="New Romy Sips Proposal Submission">
             <input type="hidden" name="_captcha" value="false">
@@ -23,13 +24,13 @@
 
             <input type="text" name="_honey" style="display:none">
 
-            <!-- EVENT DETAILS -->
             <section class="card">
                 <h2>Event Details</h2>
 
                 <label>Event Type</label>
                 <select name="event_type" required>
                     <option value="">Select event type</option>
+                    <option>Graduation</option>
                     <option>Birthday</option>
                     <option>Wedding</option>
                     <option>Corporate Event</option>
@@ -72,7 +73,6 @@
                 </div>
             </section>
 
-            <!-- SERVICE LEVEL -->
             <section class="card">
                 <h2>Service Level</h2>
 
@@ -101,7 +101,6 @@
                 </div>
             </section>
 
-            <!-- SIGNATURE DRINKS -->
             <section class="card">
                 <h2>Signature Drinks</h2>
 
@@ -133,17 +132,16 @@
                 <textarea name="special_notes" rows="3"></textarea>
             </section>
 
-            <!-- PRICING SUMMARY -->
             <section class="card">
                 <h2>Pricing Summary</h2>
 
-                <label>Base Rate</label>
+                <label>Base Rate (Up to 5 Hours)</label>
                 <input type="text" id="baseRate" name="base_rate" readonly>
 
                 <label>Additional Hours</label>
-                <input type="number" id="extraHours" name="additional_hours" readonly>
+                <input type="text" id="extraHours" name="additional_hours" readonly>
 
-                <label>Additional Hour Charges</label>
+                <label>Additional Hour Charges ($30/hr)</label>
                 <input type="text" id="extraCharge" name="additional_hour_charges" readonly>
 
                 <label>Grand Total</label>
@@ -153,23 +151,23 @@
                 <input type="text" id="deposit" name="required_deposit" readonly>
             </section>
 
-            <!-- TERMS -->
             <section class="card">
                 <h2>Terms of Service & Liability Waiver</h2>
 
-                <p>The Bartender reserves the right to refuse service to any guest who appears intoxicated. Valid ID is
-                    required for guests appearing under 30.</p>
+                <div class="terms-box">
+                    <p>The Bartender reserves the right to refuse service to any guest who appears intoxicated. Valid ID
+                        is required for guests appearing under 30.</p>
+                    <p>The Client is responsible for securing any permits. If the Client is providing the alcohol, Romy
+                        Sips is not responsible for supply shortages during the event.</p>
+                    <p>A 50% non-refundable deposit is required to secure the date. The remaining balance is due 48
+                        hours prior to the event. Cancellations made less than 7 days prior forfeit the deposit.</p>
+                    <p>The Client agrees to indemnify and hold harmless Romy Sips from any claims, damages, or
+                        liabilities arising from the consumption of alcohol at the event.</p>
+                </div>
 
-                <p>The Client is responsible for securing any permits. If the Client is providing the alcohol, Romy Sips
-                    is not responsible for supply shortages during the event.</p>
-
-                <p>A 50% non-refundable deposit is required to secure the date. The remaining balance is due 48 hours
-                    prior to the event. Cancellations made less than 7 days prior forfeit the deposit.</p>
-
-                <p>The Client agrees to indemnify and hold harmless Romy Sips from any claims, damages, or liabilities
-                    arising from the consumption of alcohol at the event.</p>
-
-                <label><input type="checkbox" name="accept_terms" required> I agree to the terms</label>
+                <div class="terms-container">
+                    <label><input type="checkbox" name="accept_terms" required> I agree to the terms</label>
+                </div>
 
                 <label>Client Signature (type full name)</label>
                 <input type="text" name="client_signature" required>
@@ -182,6 +180,8 @@
         </form>
 
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
