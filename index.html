@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romy Sips</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="page">
+
+        <div class="header">
+            <img src="assets/romy-sips-logo.png" alt="Romy Sips Logo" class="logo">
+            <div class="phone">678-799-6323</div>
+        </div>
+        <form id="romyForm" action="https://formsubmit.co/romyllc2020@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Romy Sips Proposal Submission">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://romysips.com/success.html">
+
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- EVENT DETAILS -->
+            <section class="card">
+                <h2>Event Details</h2>
+
+                <label>Event Type</label>
+                <select name="event_type" required>
+                    <option value="">Select event type</option>
+                    <option>Birthday</option>
+                    <option>Wedding</option>
+                    <option>Corporate Event</option>
+                    <option>Private Party</option>
+                    <option>Bridal Shower</option>
+                    <option>Baby Shower</option>
+                    <option>Other</option>
+                </select>
+
+                <label>Event Venue Address</label>
+                <textarea name="event_venue_address" rows="2" required></textarea>
+
+                <label>Expected Guest Count</label>
+                <input type="number" name="guest_count" min="1" required>
+
+                <label>Minors Present?</label>
+                <select name="minors_present" required>
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <label>Event Date</label>
+                <input type="date" name="event_date" required>
+
+                <label>Start Time</label>
+                <input type="time" name="start_time" id="startTime" required>
+
+                <label>End Time</label>
+                <input type="time" name="end_time" id="endTime" required>
+
+                <label>Total Hours</label>
+                <input type="number" name="total_hours" id="totalHours" min="1" step="0.5" required>
+
+                <label>Event Location</label>
+                <div class="options-row">
+                    <label><input type="radio" name="event_location" value="Inside" required> Inside</label>
+                    <label><input type="radio" name="event_location" value="Outside"> Outside</label>
+                    <label><input type="radio" name="event_location" value="Both"> Both</label>
+                </div>
+            </section>
+
+            <!-- SERVICE LEVEL -->
+            <section class="card">
+                <h2>Service Level</h2>
+
+                <label>Are you looking for:</label>
+                <div class="options-column">
+                    <label><input type="radio" name="service_level" value="Hosted/Open Bar" required> Hosted / Open
+                        Bar</label>
+                    <label><input type="radio" name="service_level" value="Cash Bar"> Cash Bar</label>
+                    <label><input type="radio" name="service_level" value="Both"> Both</label>
+                </div>
+
+                <label>Will you be providing the alcohol?</label>
+                <div class="options-column">
+                    <label><input type="radio" name="providing_alcohol" value="Yes" required> Yes</label>
+                    <label><input type="radio" name="providing_alcohol" value="No - Need Shopping Guide"> No (I need a
+                        shopping guide)</label>
+                </div>
+
+                <label>Do you need:</label>
+                <div class="options-column">
+                    <label><input type="checkbox" name="add_on_glassware" value="Glassware Rental"> Glassware
+                        Rental</label>
+                    <label><input type="checkbox" name="add_on_ice" value="Ice Service"> Ice Service</label>
+                    <label><input type="checkbox" name="add_on_portable_bar" value="Portable Bar Rental"> Portable Bar
+                        Rental</label>
+                </div>
+            </section>
+
+            <!-- SIGNATURE DRINKS -->
+            <section class="card">
+                <h2>Signature Drinks</h2>
+
+                <div class="options-column">
+                    <label><input type="checkbox" name="sig_margarita" value="Margarita"> Margarita</label>
+                    <label><input type="checkbox" name="sig_moscow_mule" value="Moscow Mule"> Moscow Mule</label>
+                    <label><input type="checkbox" name="sig_spritz" value="Spritz"> Spritz</label>
+                    <label><input type="checkbox" name="sig_mojito" value="Mojito"> Mojito</label>
+                    <label><input type="checkbox" name="sig_old_fashioned" value="Old Fashioned"> Old Fashioned</label>
+                    <label><input type="checkbox" name="sig_rum_punch" value="Rum Punch"> Rum Punch</label>
+                    <label><input type="checkbox" name="sig_vodka_cocktail" value="Vodka Cocktail"> Vodka
+                        Cocktail</label>
+                    <label><input type="checkbox" name="sig_martini" value="Martini"> Martini</label>
+                    <label><input type="checkbox" name="sig_none" value="No Signature Drink Requested"> No signature
+                        drink requested</label>
+                </div>
+
+                <h3>Garnishes</h3>
+                <div class="options-column">
+                    <label><input type="checkbox" name="garnish_lemons" value="Lemons"> Lemons</label>
+                    <label><input type="checkbox" name="garnish_limes" value="Limes"> Limes</label>
+                    <label><input type="checkbox" name="garnish_cherries" value="Cherries"> Cherries</label>
+                    <label><input type="checkbox" name="garnish_oranges" value="Oranges"> Oranges</label>
+                    <label><input type="checkbox" name="garnish_mint" value="Mint"> Mint</label>
+                    <label><input type="checkbox" name="garnish_olives" value="Olives"> Olives</label>
+                </div>
+
+                <label>Special Notes</label>
+                <textarea name="special_notes" rows="3"></textarea>
+            </section>
+
+            <!-- PRICING SUMMARY -->
+            <section class="card">
+                <h2>Pricing Summary</h2>
+
+                <label>Base Rate</label>
+                <input type="text" id="baseRate" name="base_rate" readonly>
+
+                <label>Additional Hours</label>
+                <input type="number" id="extraHours" name="additional_hours" readonly>
+
+                <label>Additional Hour Charges</label>
+                <input type="text" id="extraCharge" name="additional_hour_charges" readonly>
+
+                <label>Grand Total</label>
+                <input type="text" id="grandTotal" name="grand_total" readonly>
+
+                <label>Required Deposit (50%)</label>
+                <input type="text" id="deposit" name="required_deposit" readonly>
+            </section>
+
+            <!-- TERMS -->
+            <section class="card">
+                <h2>Terms of Service & Liability Waiver</h2>
+
+                <p>The Bartender reserves the right to refuse service to any guest who appears intoxicated. Valid ID is
+                    required for guests appearing under 30.</p>
+
+                <p>The Client is responsible for securing any permits. If the Client is providing the alcohol, Romy Sips
+                    is not responsible for supply shortages during the event.</p>
+
+                <p>A 50% non-refundable deposit is required to secure the date. The remaining balance is due 48 hours
+                    prior to the event. Cancellations made less than 7 days prior forfeit the deposit.</p>
+
+                <p>The Client agrees to indemnify and hold harmless Romy Sips from any claims, damages, or liabilities
+                    arising from the consumption of alcohol at the event.</p>
+
+                <label><input type="checkbox" name="accept_terms" required> I agree to the terms</label>
+
+                <label>Client Signature (type full name)</label>
+                <input type="text" name="client_signature" required>
+
+                <label>Date</label>
+                <input type="date" name="client_signature_date" required>
+            </section>
+
+            <button type="submit" class="submit-btn">Submit Proposal</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

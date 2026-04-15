@@ -1,0 +1,226 @@
+:root {
+    --bg: #ffffff;
+    --text: #1A2A43;
+    --muted: #777777;
+
+    /* BRAND COLORS */
+    --primary: #F14E23;
+    /* Exact Orange from "ROMY" */
+    --primary-soft: #FFF1EE;
+    --secondary: #1A2A43;
+    /* Exact Navy from logo */
+
+    --border: #e3e3e3;
+    --radius: 10px;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.45;
+}
+
+.page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+/* HEADER SECTION */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers all flex items horizontally */
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    /* Auto margins ensure centering in block context */
+}
+
+.brand {
+    font-size: 1.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 4px 0 0;
+    font-family: "Arial Narrow", sans-serif;
+    width: 100%;
+    /* Ensures text-align center works */
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-top: 6px;
+    font-weight: 700;
+    color: var(--secondary);
+    width: 100%;
+}
+
+.phone {
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.05em;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* CARD SECTIONS */
+.card {
+    background: #ffffff;
+    border-radius: var(--radius);
+    padding: 22px 18px 26px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-bottom: 26px;
+}
+
+/* Heading Fix: Garnishes, Event Details, Service Level */
+.card h2,
+.card h3,
+.garnish-header {
+    margin: 20px 0 18px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--primary) !important;
+    font-weight: 700;
+    font-family: "Arial Narrow", sans-serif;
+}
+
+.card h2:first-child {
+    margin-top: 0;
+}
+
+/* LABELS & INPUTS */
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--secondary);
+    margin-top: 18px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text);
+    outline: none;
+    transition: all 0.15s ease;
+    margin-top: 6px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
+/* CHECKBOX & RADIO ALIGNMENT */
+.options-row,
+.options-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.options-row label,
+.options-column label,
+.terms-container label {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px;
+    text-transform: none;
+    font-weight: 500;
+    letter-spacing: normal;
+    margin-top: 0 !important;
+    cursor: pointer;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+/* TERMS SECTION */
+.terms-box {
+    max-height: 180px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    padding: 15px;
+    background: #fafafa;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.terms-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--primary);
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* DESKTOP POLISH */
+@media (min-width: 768px) {
+    .page {
+        padding: 40px 0 60px;
+    }
+
+    .card {
+        padding: 26px 24px 30px;
+    }
+}
