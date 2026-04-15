@@ -6,6 +6,7 @@ const extraHoursInput = document.getElementById("extraHours");
 const extraChargeInput = document.getElementById("extraCharge");
 const grandTotalInput = document.getElementById("grandTotal");
 const depositInput = document.getElementById("deposit");
+const guestCountInput = document.getElementById("guestCount");
 
 // UPDATED RATES
 const BASE_RATE = 200;
@@ -21,33 +22,29 @@ function updateHoursFromTimes() {
     const start = parseTimeToHours(startTimeInput.value);
     const end = parseTimeToHours(endTimeInput.value);
 
-    // Only calculate if both inputs have values
     if (start !== null && end !== null) {
         let diff = end - start;
-
-        // Handle overnight events (e.g., 10 PM to 2 AM)
         if (diff < 0) diff += 24;
 
-        // Prevent 0 hour calculations
         if (diff === 0) {
             totalHoursInput.value = "";
             updatePricing();
             return;
         }
 
-        // Round to nearest 30 minutes (0.5)
         diff = Math.round(diff * 2) / 2;
         totalHoursInput.value = diff;
 
-        // Automatically trigger pricing calculation
         updatePricing();
+        refreshShoppingGuide();
     }
 }
 
 function updatePricing() {
     const hours = parseFloat(totalHoursInput.value);
 
-    if (isNaN(hours) || hours <= 0) {
+    // LOGIC: Only display if hours are 1 or greater
+    if (isNaN(hours) || hours < 1) {
         baseRateInput.value = "";
         extraHoursInput.value = "";
         extraChargeInput.value = "";
@@ -57,13 +54,12 @@ function updatePricing() {
     }
 
     const baseRate = BASE_RATE;
-    // Calculate hours exceeding the 5-hour base
+    // Calculate extra hours only if they exceed the 5-hour base inclusion
     const extraHours = Math.max(0, hours - 5);
     const extraCharge = extraHours * EXTRA_RATE;
     const grandTotal = baseRate + extraCharge;
     const deposit = grandTotal * 0.5;
 
-    // Format and display values automatically
     baseRateInput.value = `$${baseRate.toFixed(2)}`;
     extraHoursInput.value = extraHours.toFixed(1);
     extraChargeInput.value = `$${extraCharge.toFixed(2)}`;
@@ -71,12 +67,46 @@ function updatePricing() {
     depositInput.value = `$${deposit.toFixed(2)}`;
 }
 
-// Event Listeners - Use 'input' for real-time automatic updates
-if (startTimeInput && endTimeInput && totalHoursInput) {
-    startTimeInput.addEventListener("input", updateHoursFromTimes);
-    endTimeInput.addEventListener("input", updateHoursFromTimes);
-    totalHoursInput.addEventListener("input", updatePricing);
+function toggleShoppingGuide(show) {
+    const section = document.getElementById('shoppingGuideSection');
+    section.style.display = show ? 'block' : 'none';
+    if (show) calculateShoppingList();
 }
 
-// Initial calculation run on page load
-updatePricing();
+function refreshShoppingGuide() {
+    const section = document.getElementById('shoppingGuideSection');
+    if (section && section.style.display === 'block') {
+        calculateShoppingList();
+    }
+}
+
+function calculateShoppingList() {
+    const guests = parseFloat(guestCountInput.value) || 0;
+    const hours = parseFloat(totalHoursInput.value) || 0;
+
+    if (guests > 0 && hours > 0) {
+        // Industry Standard: 1.5 drinks per person per hour 
+        const totalDrinks = guests * hours * 1.5;
+
+        const beerDrinks = totalDrinks * 0.50;
+        const wineDrinks = totalDrinks * 0.25;
+        const spiritDrinks = totalDrinks * 0.25;
+
+        const casesBeer = Math.ceil(beerDrinks / 24);
+        const bottlesWine = Math.ceil(wineDrinks / 5);
+        const bottlesSpirits = Math.ceil(spiritDrinks / 16);
+        const lbsIce = Math.ceil(guests * 1.5);
+
+        document.getElementById('calcTotalDrinks').value = Math.ceil(totalDrinks);
+        document.getElementById('calcIce').value = lbsIce + " lbs";
+        document.getElementById('calcSpirits').value = bottlesSpirits + " Bottles";
+        document.getElementById('calcWine').value = bottlesWine + " Bottles";
+        document.getElementById('calcBeer').value = casesBeer + " Cases";
+    }
+}
+
+// Listeners for real-time automatic generation
+startTimeInput.addEventListener("input", updateHoursFromTimes);
+endTimeInput.addEventListener("input", updateHoursFromTimes);
+totalHoursInput.addEventListener("input", updatePricing);
+guestCountInput.addEventListener("input", refreshShoppingGuide);
