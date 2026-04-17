@@ -42,7 +42,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Centers all flex items horizontally */
     text-align: center;
     margin-bottom: 32px;
 }
@@ -52,7 +51,6 @@ body {
     height: auto;
     display: block;
     margin: 0 auto 12px;
-    /* Auto margins ensure centering in block context */
 }
 
 .brand {
@@ -64,7 +62,6 @@ body {
     margin: 4px 0 0;
     font-family: "Arial Narrow", sans-serif;
     width: 100%;
-    /* Ensures text-align center works */
 }
 
 .subtitle {
@@ -98,10 +95,8 @@ body {
     margin-bottom: 26px;
 }
 
-/* Heading Fix: Garnishes, Event Details, Service Level */
 .card h2,
-.card h3,
-.garnish-header {
+.card h3 {
     margin: 20px 0 18px;
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -148,36 +143,43 @@ textarea:focus {
     box-shadow: 0 0 0 2px var(--primary-soft);
 }
 
-/* CHECKBOX & RADIO ALIGNMENT */
-.options-row,
-.options-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 12px;
-}
-
+/* CHECKBOX & RADIO ALIGNMENT FIX */
 .options-row label,
 .options-column label,
 .terms-container label {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
+    /* Perfect vertical centering */
     gap: 12px;
     text-transform: none;
     font-weight: 500;
     letter-spacing: normal;
-    margin-top: 0 !important;
+    margin-top: 10px !important;
+    /* Spacing between options */
     cursor: pointer;
+    width: fit-content;
 }
 
+/* Prevents stretching to 100% width */
 input[type="checkbox"],
 input[type="radio"] {
-    width: 18px !important;
-    height: 18px !important;
+    width: 20px !important;
+    height: 20px !important;
     margin: 0 !important;
     flex-shrink: 0;
     cursor: pointer;
+}
+
+/* SHOPPING GUIDE GRID */
+#shoppingGuideSection {
+    transition: opacity 0.3s ease;
+}
+
+#shoppingGuideSection input[readonly] {
+    background-color: #f1f1f1;
+    color: var(--muted);
+    border-style: dashed;
 }
 
 /* TERMS SECTION */
@@ -189,13 +191,11 @@ input[type="radio"] {
     background: #fafafa;
     font-size: 0.85rem;
     margin-bottom: 15px;
+    border-radius: 5px;
 }
 
 .terms-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 15px 0;
+    margin: 20px 0;
 }
 
 /* SUBMIT BUTTON */
@@ -203,15 +203,21 @@ input[type="radio"] {
     width: 100%;
     border: none;
     border-radius: 999px;
-    padding: 16px;
-    font-size: 0.95rem;
+    padding: 18px;
+    font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     background: var(--primary);
     color: #ffffff;
     cursor: pointer;
     margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(241, 78, 35, 0.3);
+    transition: transform 0.1s ease;
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
 }
 
 /* DESKTOP POLISH */
